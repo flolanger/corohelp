@@ -4,7 +4,7 @@ index:
 
 register:
   path: /register
-  controller: \Corohelp\Controller\RegistrationController::register
+  controller: \Corohelp\Controller\AuthenticationController::register
 
 web_profiler_wdt:
   resource: '@WebProfilerBundle/Resources/config/routing/wdt.xml'
