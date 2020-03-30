@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-    <h1>Welcome</h1>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<h1>Welcome</h1>
+{% block body %}{% endblock %}
+{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('login') }}">Login</a>
+{% endif %}
+{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('register') }}">Register</a>
+{% endif %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href="{{ path('logout') }}">Logout</a>
+{% endif %}
+{% block javascripts %}{% endblock %}
+</body>
 </html>
