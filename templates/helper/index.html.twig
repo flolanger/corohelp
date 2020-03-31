@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Helper index{% endblock %}
+
+{% block body %}
+    <h1>Helper index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for helper in helpers %}
+            <tr>
+                <td>{{ helper.id }}</td>
+                <td>{{ helper.title }}</td>
+                <td>{{ helper.description }}</td>
+                <td>
+                    <a href="{{ path('helper_show', {'id': helper.id}) }}">show</a>
+                    <a href="{{ path('helper_edit', {'id': helper.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('helper_new') }}">Create new</a>
+{% endblock %}
