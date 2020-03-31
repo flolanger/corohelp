@@ -42,6 +42,14 @@ class User implements UserInterface
     private string $password;
 
     /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->roles = array('ROLE_USER');
+    }
+
+    /**
      * @return int
      */
     public function getId(): int
