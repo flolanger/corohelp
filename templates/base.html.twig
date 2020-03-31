@@ -16,6 +16,11 @@
     <a href="{{ path('logout') }}">Logout</a>
 {% endif %}
 <h1>Welcome</h1>
+
+<a href="{{ path('category_index') }}">Categories</a>
+<a href="{{ path('helper_index') }}">Helper</a>
+<a href="{{ path('seeker_index') }}">Seeker</a>
+
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
 </body>
