@@ -8,15 +8,15 @@ use Corohelp\Repository\HelperRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/helper")
+ * Class HelperController
  */
 class HelperController extends AbstractController
 {
     /**
-     * @Route("/", name="helper_index", methods={"GET"})
+     * @param \Corohelp\Repository\HelperRepository $helperRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(HelperRepository $helperRepository): Response
     {
@@ -26,7 +26,8 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="helper_new", methods={"GET","POST"})
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function new(Request $request): Response
     {
@@ -49,7 +50,8 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="helper_show", methods={"GET"})
+     * @param \Corohelp\Entity\Helper $helper
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function show(Helper $helper): Response
     {
@@ -59,7 +61,9 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="helper_edit", methods={"GET","POST"})
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Corohelp\Entity\Helper $helper
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, Helper $helper): Response
     {
@@ -79,11 +83,13 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="helper_delete", methods={"DELETE"})
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Corohelp\Entity\Helper $helper
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delete(Request $request, Helper $helper): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$helper->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $helper->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($helper);
             $entityManager->flush();

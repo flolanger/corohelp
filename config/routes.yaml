@@ -12,6 +12,70 @@ logout:
   path: /logout
   controller: \Corohelp\Controller\AuthenticationController::logout
 
+category_index:
+  path: /category
+  controller: \Corohelp\Controller\CategoryController::index
+category_new:
+  path: /category/new
+  controller: \Corohelp\Controller\CategoryController::new
+category_show:
+  path: /category/{id}
+  controller: \Corohelp\Controller\CategoryController::show
+  requirements:
+    id: '\d+'
+category_edit:
+  path: /category/{id}/edit
+  controller: \Corohelp\Controller\CategoryController::edit
+  requirements:
+    id: '\d+'
+category_delete:
+  path: /category/{id}
+  controller: \Corohelp\Controller\CategoryController::delete
+  requirements:
+    id: '\d+'
+helper_index:
+  path: /helper
+  controller: \Corohelp\Controller\HelperController::index
+helper_new:
+  path: /helper/new
+  controller: \Corohelp\Controller\HelperController::new
+helper_show:
+  path: /helper/{id}
+  controller: \Corohelp\Controller\HelperController::show
+  requirements:
+    id: '\d+'
+helper_edit:
+  path: /helper/{id}/edit
+  controller: \Corohelp\Controller\HelperController::edit
+  requirements:
+    id: '\d+'
+helper_delete:
+  path: /helper/{id}
+  controller: \Corohelp\Controller\HelperController::delete
+  requirements:
+    id: '\d+'
+seeker_index:
+  path: /seeker
+  controller: \Corohelp\Controller\SeekerController::index
+seeker_new:
+  path: /seeker/new
+  controller: \Corohelp\Controller\SeekerController::new
+seeker_show:
+  path: /seeker/{id}
+  controller: \Corohelp\Controller\SeekerController::show
+  requirements:
+    id: '\d+'
+seeker_edit:
+  path: /seeker/{id}/edit
+  controller: \Corohelp\Controller\SeekerController::edit
+  requirements:
+    id: '\d+'
+seeker_delete:
+  path: /seeker/{id}
+  controller: \Corohelp\Controller\SeekerController::delete
+  requirements:
+    id: '\d+'
+
 web_profiler_wdt:
   resource: '@WebProfilerBundle/Resources/config/routing/wdt.xml'
   prefix: /_wdt

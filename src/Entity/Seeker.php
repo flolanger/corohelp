@@ -26,7 +26,7 @@ class Seeker
     private string $title;
 
     /**
-     * @string
+     * @var string
      *
      * @ORM\Column(type="text")
      */

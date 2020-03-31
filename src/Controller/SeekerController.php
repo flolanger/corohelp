@@ -8,15 +8,15 @@ use Corohelp\Repository\SeekerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/seeker")
+ * Class SeekerController
  */
 class SeekerController extends AbstractController
 {
     /**
-     * @Route("/", name="seeker_index", methods={"GET"})
+     * @param \Corohelp\Repository\SeekerRepository $seekerRepository
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(SeekerRepository $seekerRepository): Response
     {
@@ -26,7 +26,8 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="seeker_new", methods={"GET","POST"})
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function new(Request $request): Response
     {
@@ -49,7 +50,8 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="seeker_show", methods={"GET"})
+     * @param \Corohelp\Entity\Seeker $seeker
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function show(Seeker $seeker): Response
     {
@@ -59,7 +61,9 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="seeker_edit", methods={"GET","POST"})
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Corohelp\Entity\Seeker $seeker
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function edit(Request $request, Seeker $seeker): Response
     {
@@ -79,11 +83,13 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="seeker_delete", methods={"DELETE"})
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param \Corohelp\Entity\Seeker $seeker
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function delete(Request $request, Seeker $seeker): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$seeker->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $seeker->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($seeker);
             $entityManager->flush();
