@@ -16,29 +16,28 @@ class Helper
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    protected int $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
      */
-    private string $title;
+    protected string $title = '';
 
     /**
      * @var string
      *
      * @ORM\Column(type="text")
      */
-    private string $description;
+    protected string $description = '';
 
     /**
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Corohelp\Entity\Category", inversedBy="helpers")
-     * @ORM\JoinColumn(nullable=false)
      */
-    private Category $category;
+    protected ?Category $category = null;
 
     /**
      * @return int|null

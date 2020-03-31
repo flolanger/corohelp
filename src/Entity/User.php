@@ -19,28 +19,28 @@ class User implements UserInterface
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    protected int $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private string $email = '';
+    protected string $email = '';
 
     /**
      * @var array
      *
      * @ORM\Column(type="json")
      */
-    private array $roles = [];
+    protected array $roles = [];
 
     /**
      * @var string The hashed password
      *
      * @ORM\Column(type="string")
      */
-    private string $password;
+    protected string $password;
 
     /**
      * User constructor.

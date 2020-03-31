@@ -21,6 +21,7 @@ category_new:
 category_show:
   path: /category/{id}
   controller: \Corohelp\Controller\CategoryController::show
+  methods: GET
   requirements:
     id: '\d+'
 category_edit:
@@ -31,6 +32,7 @@ category_edit:
 category_delete:
   path: /category/{id}
   controller: \Corohelp\Controller\CategoryController::delete
+  methods: DELETE
   requirements:
     id: '\d+'
 helper_index:
@@ -42,6 +44,7 @@ helper_new:
 helper_show:
   path: /helper/{id}
   controller: \Corohelp\Controller\HelperController::show
+  methods: GET
   requirements:
     id: '\d+'
 helper_edit:
@@ -52,6 +55,7 @@ helper_edit:
 helper_delete:
   path: /helper/{id}
   controller: \Corohelp\Controller\HelperController::delete
+  methods: DELETE
   requirements:
     id: '\d+'
 seeker_index:
@@ -63,6 +67,7 @@ seeker_new:
 seeker_show:
   path: /seeker/{id}
   controller: \Corohelp\Controller\SeekerController::show
+  methods: GET
   requirements:
     id: '\d+'
 seeker_edit:
@@ -73,6 +78,7 @@ seeker_edit:
 seeker_delete:
   path: /seeker/{id}
   controller: \Corohelp\Controller\SeekerController::delete
+  methods: DELETE
   requirements:
     id: '\d+'
 

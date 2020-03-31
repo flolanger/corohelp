@@ -18,26 +18,26 @@ class Category
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private int $id;
+    protected int $id;
 
     /**
      * @var string
      *
      * @ORM\Column(type="string", length=255)
      */
-    private string $title;
+    protected string $title = '';
 
     /**
-     * @var ArrayCollection
+     * @var Collection
      * @ORM\OneToMany(targetEntity="Corohelp\Entity\Seeker", mappedBy="category")
      */
-    private ArrayCollection $seekers;
+    protected Collection $seekers;
 
     /**
-     * @var ArrayCollection
+     * @var Collection
      * @ORM\OneToMany(targetEntity="Corohelp\Entity\Helper", mappedBy="category")
      */
-    private ArrayCollection $helpers;
+    protected Collection $helpers;
 
     public function __construct()
     {
@@ -54,9 +54,9 @@ class Category
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -73,7 +73,7 @@ class Category
     }
 
     /**
-     * @return Collection|Seeker[]
+     * @return Collection
      */
     public function getSeekers(): Collection
     {
@@ -112,7 +112,7 @@ class Category
     }
 
     /**
-     * @return Collection|Helper[]
+     * @return Collection
      */
     public function getHelpers(): Collection
     {
