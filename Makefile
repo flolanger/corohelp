@@ -14,7 +14,6 @@ destroy: stop
 start:
 	echo "$(EMOJI_up) Starting the docker project"
 	docker-compose up -d --build
-	make urls
 
 ## Starts composer-install
 composer-install:

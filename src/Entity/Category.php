@@ -12,26 +12,32 @@ use Doctrine\ORM\Mapping as ORM;
 class Category
 {
     /**
+     * @var int
+     *
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
+    private string $title;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Corohelp\Entity\Seeker", mappedBy="category")
      */
-    private $seekers;
+    private ArrayCollection $seekers;
 
     /**
+     * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="Corohelp\Entity\Helper", mappedBy="category")
      */
-    private $helpers;
+    private ArrayCollection $helpers;
 
     public function __construct()
     {
@@ -39,16 +45,26 @@ class Category
         $this->helpers = new ArrayCollection();
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTitle(): ?string
     {
         return $this->title;
     }
 
+    /**
+     * @param string $title
+     * @return $this
+     */
     public function setTitle(string $title): self
     {
         $this->title = $title;
@@ -64,6 +80,10 @@ class Category
         return $this->seekers;
     }
 
+    /**
+     * @param Seeker $seeker
+     * @return $this
+     */
     public function addSeeker(Seeker $seeker): self
     {
         if (!$this->seekers->contains($seeker)) {
@@ -74,6 +94,10 @@ class Category
         return $this;
     }
 
+    /**
+     * @param Seeker $seeker
+     * @return $this
+     */
     public function removeSeeker(Seeker $seeker): self
     {
         if ($this->seekers->contains($seeker)) {
@@ -95,6 +119,10 @@ class Category
         return $this->helpers;
     }
 
+    /**
+     * @param Helper $helper
+     * @return $this
+     */
     public function addHelper(Helper $helper): self
     {
         if (!$this->helpers->contains($helper)) {
@@ -105,6 +133,10 @@ class Category
         return $this;
     }
 
+    /**
+     * @param Helper $helper
+     * @return $this
+     */
     public function removeHelper(Helper $helper): self
     {
         if ($this->helpers->contains($helper)) {
