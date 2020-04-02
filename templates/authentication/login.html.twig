@@ -12,11 +12,11 @@
                             {% if app.user %}
                                 <div class="mb-3">
                                     <h3 class="uk-card-title uk-text-center">{% trans %}authentication.loggedin{% endtrans %}</h3>
-                                    <p class="uk-text-center">{% trans with {'username': app.user.username, 'url': path('logout')} %}authentication.loggedinMessage{% endtrans %}</p>
+                                    <p class="uk-text-center">{% trans with {'username': app.user.username, 'url': '/logout'} %}authentication.loggedinMessage{% endtrans %}</p>
                                 </div>
                             {% else %}
-                            <h3 class="uk-card-title uk-text-center">{% trans %}authentication.header{% endtrans %}</h3>
-                            <form method="post">
+                                <h3 class="uk-card-title uk-text-center">{% trans %}authentication.header{% endtrans %}</h3>
+                                {{ form_start(loginForm) }}
                                 {% if error %}
                                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                                 {% endif %}
@@ -24,33 +24,35 @@
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="uk-input uk-form-large" placeholder="{% trans %}authentication.email{% endtrans %}" required
-                                               autofocus>
+                                        {{ form_widget(loginForm.email, {'attr': {'value': last_username, 'class': 'uk-input uk-form-large', 'autofocus': ''}}) }}
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                                        <input type="password" name="password" id="inputPassword" class="uk-input uk-form-large" placeholder="{% trans %}authentication.password{% endtrans %}" required>
+                                        {{ form_widget(loginForm.password, {'attr': {'value': last_username, 'class': 'uk-input uk-form-large'}}) }}
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
-                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                        {{ form_widget(loginForm._csrf_token, {'attr': {'value': csrf_token('authenticate')}}) }}
                                         <label>
-                                            <input class="uk-checkbox" type="checkbox" name="_remember_me"> {% trans %}authentication.rememberMe{% endtrans %}
+                                            {{ form_widget(loginForm._remember_me, {'attr': {'class': 'uk-checkbox'}}) }}
+                                            {% trans %}authentication.rememberMe{% endtrans %}
                                         </label>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">
+                                    <button class="uk-button uk-button-primary uk-button-large uk-width-1-1"
+                                            type="submit">
                                         {% trans %}authentication.login{% endtrans %}
                                     </button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    {% trans %}authentication.noAccountQuestion{% endtrans %} <a href="{{ path('register') }}">{% trans %}authentication.createAccount{% endtrans %}</a>
+                                    {% trans %}authentication.noAccountQuestion{% endtrans %} <a
+                                            href="{{ path('register') }}">{% trans %}authentication.createAccount{% endtrans %}</a>
                                 </div>
-                            </form>
+                                {{ form_end(loginForm) }}
                             {% endif %}
                         </div>
                     </div>

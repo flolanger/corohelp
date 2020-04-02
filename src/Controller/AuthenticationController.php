@@ -3,7 +3,9 @@
 namespace Corohelp\Controller;
 
 use Corohelp\Entity\User;
-use Corohelp\Form\RegistrationFormType;
+use Corohelp\Form\LoginType;
+use Corohelp\Form\RegistrationType;
+use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,14 +15,14 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AuthenticationController extends AbstractController
 {
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $passwordEncoder
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @return Response
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -45,28 +47,28 @@ class AuthenticationController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\Security\Http\Authentication\AuthenticationUtils $authenticationUtils
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        $form = $this->createForm(LoginType::class);
 
-        // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('authentication/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render(
+            'authentication/login.html.twig',
+            [
+                'loginForm' => $form->createView(),
+                'last_username' => $lastUsername,
+                'error' => $error
+            ]
+        );
     }
 
-    /**
-     *
-     */
     public function logout()
     {
-        throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        throw new LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 }
