@@ -11,6 +11,9 @@ login:
 logout:
   path: /logout
   controller: \Corohelp\Controller\AuthenticationController::logout
+user:
+  path: /user
+  controller: \Corohelp\Controller\UserController::edit
 
 category_index:
   path: /category
