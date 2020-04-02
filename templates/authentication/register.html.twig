@@ -9,27 +9,26 @@
                 <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
                     <div class="uk-width-1-1@m">
                         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-                            <h3 class="uk-card-title uk-text-center">Erstelle ein Profil</h3>
+                            <h3 class="uk-card-title uk-text-center">{% trans %}register.header{% endtrans %}</h3>
                             {{ form_start(registrationForm) }}
                             <div class="uk-margin">
                                 <div class="uk-inline uk-width-1-1">
                                     <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                                    {{ form_widget(registrationForm.email, {'attr': {'class': 'uk-input uk-form-large', 'placeholder': 'E-Mail'} }) }}
+                                    {{ form_widget(registrationForm.email, {'attr': {'class': 'uk-input uk-form-large', 'placeholder': 'register.email'|trans} }) }}
                                 </div>
                             </div>
                             <div class="uk-margin">
                                 <div class="uk-inline uk-width-1-1">
                                     <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'uk-input uk-form-large', 'placeholder': 'Passwort'} }) }}
+                                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'uk-input uk-form-large', 'placeholder': 'register.password'|trans} }) }}
                                 </div>
                             </div>
                             <div class="uk-margin">
-                                <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Profil
-                                    erstellen</button>
+                                <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">{% trans %}register.createAccount{% endtrans %}</button>
                             </div>
                             {{ form_end(registrationForm) }}
                             <div class="uk-text-small uk-text-center">
-                                Bereits ein Profil? <a href="{{ path('login') }}">Logge dich ein</a>
+                                {% trans %}register.accountExists{% endtrans %}<a href="{{ path('login') }}"> {% trans %}register.login{% endtrans %}</a>
                             </div>
                         </div>
                     </div>

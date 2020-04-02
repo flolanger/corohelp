@@ -6,3 +6,12 @@ authentication:
   rememberMe: Angemeldet bleiben
   noAccountQuestion: Noch kein Profil?
   createAccount: Erstelle ein Profil
+  loggedin: Du bist bereits eingeloggt :)
+  loggedinMessage: Möchtest du dich von username <a href="url">abmelden</a>?
+register:
+  header: Erstelle ein Profil
+  createAccount: Profil erstellen
+  accountExists: Bereits ein Profil?
+  login: Logge dich ein
+  email: E-Mail
+  password: Passwort

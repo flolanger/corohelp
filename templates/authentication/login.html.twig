@@ -11,8 +11,8 @@
                         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
                             {% if app.user %}
                                 <div class="mb-3">
-                                    <h3 class="uk-card-title uk-text-center">Du bist bereits eingeloggt :)</h3>
-                                    <p class="uk-text-center">Möchtest du dich von {{ app.user.username }} <a href="{{ path('logout') }}">abmelden</a>?</p>
+                                    <h3 class="uk-card-title uk-text-center">{% trans %}authentication.loggedin{% endtrans %}</h3>
+                                    <p class="uk-text-center">{% trans with {'username': app.user.username, 'url': path('logout')} %}authentication.loggedinMessage{% endtrans %}</p>
                                 </div>
                             {% else %}
                             <h3 class="uk-card-title uk-text-center">{% trans %}authentication.header{% endtrans %}</h3>
