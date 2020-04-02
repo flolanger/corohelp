@@ -102,7 +102,7 @@ class User implements UserInterface
      * @param string $location
      * @return self
      */
-    public function setLocation(string $location): User
+    public function setLocation(string $location = ''): User
     {
         $this->location = $location;
         return $this;
@@ -120,7 +120,7 @@ class User implements UserInterface
      * @param string $phoneNumber
      * @return self
      */
-    public function setPhoneNumber(string $phoneNumber): User
+    public function setPhoneNumber(string $phoneNumber = ''): User
     {
         $this->phoneNumber = $phoneNumber;
         return $this;

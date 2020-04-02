@@ -8,6 +8,7 @@ authentication:
   createAccount: Erstelle ein Profil
   loggedin: Du bist bereits eingeloggt :)
   loggedinMessage: Möchtest du dich von username <a href="url">abmelden</a>?
+
 register:
   header: Erstelle ein Profil
   createAccount: Profil erstellen
@@ -15,5 +16,6 @@ register:
   login: Logge dich ein
   email: E-Mail
   password: Passwort
+  passwordRepeat: Passwort wiederholen
   location: Ort
   phoneNumber: Telefonnummer
