@@ -1,0 +1,41 @@
+<?php
+declare(strict_types=1);
+namespace Corohelp\Controller;
+
+use Corohelp\Repository\HelperRepository;
+use Corohelp\Repository\SeekerRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+
+/**
+ * Class MainController
+ */
+class MainController extends AbstractController
+{
+    /**
+     * @var SeekerRepository
+     */
+    protected SeekerRepository $seekerRepository;
+
+    /**
+     * @var HelperRepository
+     */
+    protected HelperRepository $helperRepository;
+
+    public function __construct(SeekerRepository $seekerRepository, HelperRepository $helperRepository)
+    {
+        $this->seekerRepository = $seekerRepository;
+        $this->helperRepository = $helperRepository;
+    }
+
+    /**
+     * @return Response
+     */
+    public function index()
+    {
+        return $this->render('base.html.twig', [
+            'seekers' => $this->seekerRepository->findAll(),
+            'helpers' => $this->helperRepository->findAll(),
+        ]);
+    }
+}

@@ -1,6 +1,6 @@
 index:
   path: /
-  controller: \Corohelp\Controller\DefaultController::index
+  controller: \Corohelp\Controller\MainController::index
 
 register:
   path: /register
