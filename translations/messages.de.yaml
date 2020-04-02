@@ -1,0 +1,8 @@
+authentication:
+  header: Willkommen zurück!
+  login: Einloggen
+  email: E-Mail
+  password: Passwort
+  rememberMe: Angemeldet bleiben
+  noAccountQuestion: Noch kein Profil?
+  createAccount: Erstelle ein Profil

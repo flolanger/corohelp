@@ -15,7 +15,7 @@
                                     <p class="uk-text-center">Möchtest du dich von {{ app.user.username }} <a href="{{ path('logout') }}">abmelden</a>?</p>
                                 </div>
                             {% else %}
-                            <h3 class="uk-card-title uk-text-center">Willkommen zurück!</h3>
+                            <h3 class="uk-card-title uk-text-center">{% trans %}authentication.header{% endtrans %}</h3>
                             <form method="post">
                                 {% if error %}
                                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -24,32 +24,31 @@
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="uk-input uk-form-large" placeholder="E-Mail" required
+                                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="uk-input uk-form-large" placeholder="{% trans %}authentication.email{% endtrans %}" required
                                                autofocus>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <span class="uk-form-icon" uk-icon="icon: lock"></span>
-                                        <input type="password" name="password" id="inputPassword" class="uk-input uk-form-large" placeholder="Passwort" required>
+                                        <input type="password" name="password" id="inputPassword" class="uk-input uk-form-large" placeholder="{% trans %}authentication.password{% endtrans %}" required>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <div class="uk-inline uk-width-1-1">
                                         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                                         <label>
-                                            <input class="uk-checkbox" type="checkbox" name="_remember_me"> Angemeldet
-                                            bleiben
+                                            <input class="uk-checkbox" type="checkbox" name="_remember_me"> {% trans %}authentication.rememberMe{% endtrans %}
                                         </label>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">
-                                        Einloggen
+                                        {% trans %}authentication.login{% endtrans %}
                                     </button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
-                                    Noch kein Profil? <a href="{{ path('register') }}">Erstelle ein Profil</a>
+                                    {% trans %}authentication.noAccountQuestion{% endtrans %} <a href="{{ path('register') }}">{% trans %}authentication.createAccount{% endtrans %}</a>
                                 </div>
                             </form>
                             {% endif %}
