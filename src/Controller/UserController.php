@@ -15,11 +15,12 @@ class UserController extends AbstractController
 {
     /**
      * @param Request $request
-     * @param User $user
      * @return Response
      */
-    public function edit(Request $request, User $user): Response
+    public function edit(Request $request): Response
     {
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
