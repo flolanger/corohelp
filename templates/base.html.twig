@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-</head>
-<body>
-{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-    <a href="{{ path('login') }}">Login</a>
-{% endif %}
-{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-    <a href="{{ path('register') }}">Register</a>
-{% endif %}
-{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <a href="{{ path('logout') }}">Logout</a>
-{% endif %}
-<h1>Welcome</h1>
-
-<a href="{{ path('category_index') }}">Categories</a>
-<a href="{{ path('helper_index') }}">Helper</a>
-<a href="{{ path('seeker_index') }}">Seeker</a>
-
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Corohelp{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+    </head>
+    <body>
+        {% block body %}
+            {% include 'seeker/index.html.twig' %}
+        {% endblock %}
+    </body>
 </html>
