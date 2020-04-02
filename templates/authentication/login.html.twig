@@ -3,24 +3,22 @@
 {% block title %}Login - Corohelp{% endblock %}
 
 {% block body %}
-    {% block navigation %}
-    {% endblock %}
     <div class="uk-section uk-flex uk-flex-middle" uk-height-viewport>
         <div class="uk-width-1-1">
             <div class="uk-container">
                 <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
                     <div class="uk-width-1-1@m">
                         <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    <h3 class="uk-card-title uk-text-center">Du bist bereits eingeloggt :)</h3>
+                                    <p class="uk-text-center">Möchtest du dich von {{ app.user.username }} <a href="{{ path('logout') }}">abmelden</a>?</p>
+                                </div>
+                            {% else %}
                             <h3 class="uk-card-title uk-text-center">Willkommen zurück!</h3>
                             <form method="post">
                                 {% if error %}
                                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                                {% endif %}
-
-                                {% if app.user %}
-                                    <div class="mb-3">
-                                        You are logged in as {{ app.user.username }}, <a href="{{ path('logout') }}">Logout</a>
-                                    </div>
                                 {% endif %}
 
                                 <div class="uk-margin">
@@ -54,6 +52,7 @@
                                     Noch kein Profil? <a href="{{ path('register') }}">Erstelle ein Profil</a>
                                 </div>
                             </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
