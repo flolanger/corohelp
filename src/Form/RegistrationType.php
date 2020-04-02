@@ -30,7 +30,9 @@ class RegistrationType extends AbstractType
                             'max' => 4096,
                         ]),
                     ],
-                ]);
+                ])
+            ->add('location')
+            ->add('phoneNumber');
     }
 
     public function configureOptions(OptionsResolver $resolver)

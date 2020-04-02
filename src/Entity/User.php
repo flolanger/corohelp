@@ -29,6 +29,20 @@ class User implements UserInterface
     protected string $email = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected string $location = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=20)
+     */
+    protected string $phoneNumber = '';
+
+    /**
      * @var array
      *
      * @ORM\Column(type="json")
@@ -73,6 +87,42 @@ class User implements UserInterface
     public function setEmail(string $email): User
     {
         $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation(): string
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param string $location
+     * @return self
+     */
+    public function setLocation(string $location): User
+    {
+        $this->location = $location;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber(): string
+    {
+        return $this->phoneNumber;
+    }
+
+    /**
+     * @param string $phoneNumber
+     * @return self
+     */
+    public function setPhoneNumber(string $phoneNumber): User
+    {
+        $this->phoneNumber = $phoneNumber;
         return $this;
     }
 

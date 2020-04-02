@@ -34,7 +34,7 @@ class MainController extends AbstractController
      */
     public function index()
     {
-        return $this->render('base.html.twig', [
+        return $this->render('/main/index.html.twig', [
             'seekers' => $this->seekerRepository->findAll(),
             'helpers' => $this->helperRepository->findAll(),
         ]);

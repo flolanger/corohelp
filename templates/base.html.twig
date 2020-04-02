@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Corohelp{% endblock %}</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}" />
-        <script src="{{ asset('js/uikit.min.js') }}"></script>
-        <script src="{{ asset('js/uikit-icons.min.js') }}"></script>
-    </head>
-    <body>
-        {% block body %}
-            {% include 'seeker/index.html.twig' %}
-        {% endblock %}
-    </body>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Corohelp{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}"/>
+    <script src="{{ asset('js/uikit.min.js') }}"></script>
+    <script src="{{ asset('js/uikit-icons.min.js') }}"></script>
+</head>
+<body>
+{% block body %}
+    {% include 'seeker/index.html.twig' %}
+{% endblock %}
+</body>
 </html>
