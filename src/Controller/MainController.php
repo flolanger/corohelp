@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Corohelp\Controller;
 
 use Corohelp\Repository\HelperRepository;

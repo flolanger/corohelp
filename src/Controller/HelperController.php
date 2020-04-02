@@ -15,8 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 class HelperController extends AbstractController
 {
     /**
-     * @param \Corohelp\Repository\HelperRepository $helperRepository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param HelperRepository $helperRepository
+     * @return Response
      */
     public function index(HelperRepository $helperRepository): Response
     {
@@ -26,8 +26,8 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,8 +50,8 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @param \Corohelp\Entity\Helper $helper
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Helper $helper
+     * @return Response
      */
     public function show(Helper $helper): Response
     {
@@ -61,9 +61,9 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Corohelp\Entity\Helper $helper
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Helper $helper
+     * @return Response
      */
     public function edit(Request $request, Helper $helper): Response
     {
@@ -83,9 +83,9 @@ class HelperController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Corohelp\Entity\Helper $helper
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Helper $helper
+     * @return Response
      */
     public function delete(Request $request, Helper $helper): Response
     {

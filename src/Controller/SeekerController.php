@@ -15,8 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 class SeekerController extends AbstractController
 {
     /**
-     * @param \Corohelp\Repository\SeekerRepository $seekerRepository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param SeekerRepository $seekerRepository
+     * @return Response
      */
     public function index(SeekerRepository $seekerRepository): Response
     {
@@ -26,8 +26,8 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,8 +50,8 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @param \Corohelp\Entity\Seeker $seeker
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Seeker $seeker
+     * @return Response
      */
     public function show(Seeker $seeker): Response
     {
@@ -61,9 +61,9 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Corohelp\Entity\Seeker $seeker
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Seeker $seeker
+     * @return Response
      */
     public function edit(Request $request, Seeker $seeker): Response
     {
@@ -83,9 +83,9 @@ class SeekerController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Corohelp\Entity\Seeker $seeker
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Seeker $seeker
+     * @return Response
      */
     public function delete(Request $request, Seeker $seeker): Response
     {

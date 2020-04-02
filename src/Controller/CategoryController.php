@@ -15,8 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 class CategoryController extends AbstractController
 {
     /**
-     * @param \Corohelp\Repository\CategoryRepository $categoryRepository
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param CategoryRepository $categoryRepository
+     * @return Response
      */
     public function index(CategoryRepository $categoryRepository): Response
     {
@@ -26,8 +26,8 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,8 +50,8 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @param \Corohelp\Entity\Category $category
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Category $category
+     * @return Response
      */
     public function show(Category $category): Response
     {
@@ -61,9 +61,9 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Corohelp\Entity\Category $category
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -83,9 +83,9 @@ class CategoryController extends AbstractController
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Corohelp\Entity\Category $category
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param Request $request
+     * @param Category $category
+     * @return Response
      */
     public function delete(Request $request, Category $category): Response
     {

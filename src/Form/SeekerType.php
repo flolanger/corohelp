@@ -13,8 +13,7 @@ class SeekerType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
-        ;
+            ->add('description');
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -86,7 +86,7 @@ class Seeker
     }
 
     /**
-     * @return \Corohelp\Entity\Category|null
+     * @return Category|null
      */
     public function getCategory(): ?Category
     {
@@ -94,7 +94,7 @@ class Seeker
     }
 
     /**
-     * @param \Corohelp\Entity\Category|null $category
+     * @param Category|null $category
      * @return $this
      */
     public function setCategory(?Category $category): self
