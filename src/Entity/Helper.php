@@ -4,6 +4,7 @@ namespace Corohelp\Entity;
 
 use Corohelp\Entity\Traits\PostTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="Corohelp\Repository\HelperRepository")
@@ -21,26 +22,26 @@ class Helper extends AbstractEntity
     protected ?Category $category = null;
 
     /**
-     * @var User
+     * @var UserInterface
      *
      * @ORM\ManyToOne(targetEntity="Corohelp\Entity\User", inversedBy="helpers")
      * @ORM\JoinColumn(nullable=false)
      */
-    private User $user;
+    private UserInterface $user;
 
     /**
-     * @return User
+     * @return UserInterface
      */
-    public function getUser(): User
+    public function getUser(): UserInterface
     {
         return $this->user;
     }
 
     /**
-     * @param User $user
+     * @param UserInterface $user
      * @return self
      */
-    public function setUser(User $user): self
+    public function setUser(UserInterface $user): self
     {
         $this->user = $user;
 
