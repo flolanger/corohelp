@@ -6,8 +6,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/uikit.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         <script src="{{ asset('js/uikit.min.js') }}"></script>
         <script src="{{ asset('js/uikit-icons.min.js') }}"></script>
+        <script src="{{ asset('js/autocomplete.min.js') }}"></script>
     </head>
     <body>
         {% if not (app.request.attributes.get('_route') == 'register' or app.request.attributes.get('_route') == 'login') %}
@@ -18,5 +20,6 @@
                 {% include 'seeker/index.html.twig' %}
             {% endblock %}
         </div>
+    <script type="text/javascript" src="{{ asset('js/basic.js') }}"></script>
     </body>
 </html>
