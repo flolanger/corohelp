@@ -11,9 +11,33 @@ login:
 logout:
   path: /logout
   controller: \Corohelp\Controller\AuthenticationController::logout
-user:
-  path: /user
+profile:
+  path: /profile
+  controller: \Corohelp\Controller\UserController::profile
+
+user_index:
+  path: /users
+  controller: \Corohelp\Controller\UserController::index
+user_new:
+  path: /user/new
+  controller: \Corohelp\Controller\UserController::new
+user_show:
+  path: /user/{id}
+  controller: \Corohelp\Controller\UserController::show
+  methods: GET
+  requirements:
+    id: '\d+'
+user_edit:
+  path: /user/{id}/edit
   controller: \Corohelp\Controller\UserController::edit
+  requirements:
+    id: '\d+'
+user_delete:
+  path: /user/{id}
+  controller: \Corohelp\Controller\UserController::delete
+  methods: DELETE
+  requirements:
+    id: '\d+'
 
 category_index:
   path: /category

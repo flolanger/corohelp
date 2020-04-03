@@ -25,7 +25,7 @@
                 <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: lifesaver"></span>{% trans %}nav.helper{% endtrans %}</a>
                 <li class="uk-margin-top"></li>
                 <li class="uk-nav-divider"></li>
-                <li><a href="{{ path('user') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>{% trans %}nav.profile{% endtrans %}</a>
+                <li><a href="{{ path('profile') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>{% trans %}nav.profile{% endtrans %}</a>
                 </li>
                 <li class="uk-position-bottom uk-margin-left">
                     <a href="{{ path('logout') }}"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>{% trans %}nav.logout{% endtrans %}</a>
@@ -59,7 +59,7 @@
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="#">{{ app.user.username }}</a></li>
                                 <li>
-                                    <a href="{{ path('user') }}">{% trans %}nav.profile{% endtrans %}</a>
+                                    <a href="{{ path('profile') }}">{% trans %}nav.profile{% endtrans %}</a>
                                 </li>
 
                                 <li>

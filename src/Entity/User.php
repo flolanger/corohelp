@@ -50,11 +50,11 @@ class User implements UserInterface
     protected string $phoneNumber = '';
 
     /**
-     * @var array
+     * @var string
      *
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="string")
      */
-    protected array $roles = [];
+    protected string $role = '';
 
     /**
      * @var string The hashed password
@@ -62,14 +62,6 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     protected string $password;
-
-    /**
-     * User constructor.
-     */
-    public function __construct()
-    {
-        $this->roles = ['ROLE_USER'];
-    }
 
     /**
      * @return int
@@ -152,20 +144,28 @@ class User implements UserInterface
     }
 
     /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
      * @return array
      */
     public function getRoles(): array
     {
-        return $this->roles;
+        return [$this->getRole()];
     }
 
     /**
-     * @param array $roles
+     * @param string $role
      * @return self
      */
-    public function setRoles(array $roles): User
+    public function setRole(string $role): User
     {
-        $this->roles = $roles;
+        $this->role = $role;
         return $this;
     }
 
