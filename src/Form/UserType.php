@@ -29,6 +29,7 @@ class UserType extends AbstractType
                         ]),
                     ],
                 ])
+            ->add('name')
             ->add('location')
             ->add('phoneNumber');
     }

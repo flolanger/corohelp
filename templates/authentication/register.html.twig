@@ -40,6 +40,12 @@
                         </div>
                         <div class="uk-margin">
                             <div class="uk-inline uk-width-1-1">
+                                <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                {{ form_widget(registrationForm.name, {'attr': {'class': 'uk-input uk-form-large', 'placeholder': 'register.name'} }) }}
+                            </div>
+                        </div>
+                        <div class="uk-margin">
+                            <div class="uk-inline uk-width-1-1">
                                 <span class="uk-form-icon" uk-icon="icon: location"></span>
                                 {{ form_widget(registrationForm.location, {'attr': {'class': 'uk-input uk-form-large js-location', 'placeholder': 'register.location'} }) }}
                             </div>

@@ -56,6 +56,14 @@ class RegistrationType extends AbstractType
                 'second_options' => ['attr' => ['placeholder' => 'register.passwordRepeat']],
             ])
             ->add(
+                'name',
+                TextType::class,
+                [
+                    'required' => false,
+                    'empty_data' => '',
+                ]
+            )
+            ->add(
                 'location',
                 TextType::class,
                 [

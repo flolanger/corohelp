@@ -17,5 +17,6 @@ register:
   email: E-Mail
   password: Passwort
   passwordRepeat: Passwort wiederholen
+  name: Name
   location: Ort
-  phoneNumber: Telefonnummer
+  phoneNumber: Telefonnummer (optional)

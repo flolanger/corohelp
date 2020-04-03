@@ -33,6 +33,13 @@ class User implements UserInterface
      *
      * @ORM\Column(type="string")
      */
+    protected string $name = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
     protected string $location = '';
 
     /**
@@ -87,6 +94,24 @@ class User implements UserInterface
     public function setEmail(string $email): User
     {
         $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     * @return self
+     */
+    public function setName(string $name = ''): User
+    {
+        $this->name = $name;
         return $this;
     }
 
