@@ -1,7 +1,7 @@
 <nav class="uk-navbar uk-navbar-container uk-margin uk-hidden@l">
     <div class="uk-navbar-left">
         <a class="uk-navbar-toggle" href="#offcanvas-nav-primary" uk-toggle>
-            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menü</span>
+            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">{% trans %}nav.menu{% endtrans %}</span>
         </a>
     </div>
 </nav>
@@ -11,24 +11,24 @@
         {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="uk-nav uk-nav-primary uk-nav-center">
                 <li>
-                    <a href="{{ path('register') }}">Registrieren</a>
+                    <a href="{{ path('register') }}">{% trans %}nav.register{% endtrans %}</a>
                 </li>
                 <li>
-                    <a href="{{ path('login') }}">Einloggen</a>
+                    <a href="{{ path('login') }}">{% trans %}nav.login{% endtrans %}</a>
                 </li>
             </ul>
         {% endif %}
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="uk-nav uk-nav-primary">
-                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: comments"></span>Alle Beiträge</a>
-                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: heart"></span>Bedüftige</a>
-                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: lifesaver"></span>Helfer</a>
+                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: comments"></span>{% trans %}nav.allposts{% endtrans %}</a>
+                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: heart"></span>{% trans %}nav.seeker{% endtrans %}</a>
+                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: lifesaver"></span>{% trans %}nav.helper{% endtrans %}</a>
                 <li class="uk-margin-top"></li>
                 <li class="uk-nav-divider"></li>
-                <li><a href="{{ path('user') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>Profil</a>
+                <li><a href="{{ path('user') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>{% trans %}nav.profile{% endtrans %}</a>
                 </li>
                 <li class="uk-position-bottom uk-margin-left">
-                    <a href="{{ path('logout') }}"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Logout</a>
+                    <a href="{{ path('logout') }}"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>{% trans %}nav.logout{% endtrans %}</a>
                 </li>
             </ul>
         {% endif %}
@@ -44,12 +44,12 @@
         <ul class="uk-navbar-nav">
             {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li>
-                    <a href="{{ path('register') }}">Registrieren</a>
+                    <a href="{{ path('register') }}">{% trans %}nav.register{% endtrans %}</a>
                 </li>
             {% endif %}
             {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
                 <li>
-                    <a href="{{ path('login') }}">Einloggen</a>
+                    <a href="{{ path('login') }}">{% trans %}nav.login{% endtrans %}</a>
                 </li>
             {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -59,11 +59,11 @@
                             <ul class="uk-nav uk-navbar-dropdown-nav">
                                 <li class="uk-active"><a href="#">{{ app.user.username }}</a></li>
                                 <li>
-                                    <a href="{{ path('user') }}">Profil</a>
+                                    <a href="{{ path('user') }}">{% trans %}nav.profile{% endtrans %}</a>
                                 </li>
 
                                 <li>
-                                    <a href="{{ path('logout') }}">Logout</a>
+                                    <a href="{{ path('logout') }}">{% trans %}nav.logout{% endtrans %}</a>
                                 </li>
                             </ul>
                         </div>

@@ -20,3 +20,13 @@ register:
   name: Name
   location: Ort
   phoneNumber: Telefonnummer (optional)
+
+nav:
+  menu: Menü
+  register: Profil erstellen
+  login: Einloggen
+  allposts: Alle Beiträge
+  seeker: Bedürftige
+  helper: Helfer
+  profile: Profil
+  logout: Ausloggen
