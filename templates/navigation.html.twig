@@ -1,16 +1,37 @@
-{% block navigation %}
-    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('login') }}">Login</a>
-    {% endif %}
-    {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('register') }}">Register</a>
-    {% endif %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('logout') }}">Logout</a>
-    {% endif %}
-    <h1>Welcome</h1>
+<nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="#">Corohelp</a>
+    </div>
+    <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li>
+                    <a href="{{ path('register') }}">Registrieren</a>
+                </li>
+            {% endif %}
+            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li>
+                    <a href="{{ path('login') }}">Einloggen</a>
+                </li>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li>
+                    <a href=""><span uk-icon="icon: user"></span>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">{{ app.user.username }}</a></li>
+                                <li>
+                                    <a href="{{ path('user') }}">Profil</a>
+                                </li>
 
-    <a href="{{ path('category_index') }}">Categories</a>
-    <a href="{{ path('helper_index') }}">Helper</a>
-    <a href="{{ path('seeker_index') }}">Seeker</a>
-{% endblock %}
+                                <li>
+                                    <a href="{{ path('logout') }}">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
