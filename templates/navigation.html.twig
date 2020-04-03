@@ -1,6 +1,44 @@
-<nav class="uk-navbar-container" uk-navbar>
+<nav class="uk-navbar uk-navbar-container uk-margin uk-hidden@l">
     <div class="uk-navbar-left">
-        <a class="uk-navbar-item uk-logo" href="#">Corohelp</a>
+        <a class="uk-navbar-toggle" href="#offcanvas-nav-primary" uk-toggle>
+            <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menü</span>
+        </a>
+    </div>
+</nav>
+<div id="offcanvas-nav-primary" uk-offcanvas="overlay: true">
+    <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+        <a class="uk-navbar-item uk-logo" href="/">Corohelp</a>
+        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+            <ul class="uk-nav uk-nav-primary uk-nav-center">
+                <li>
+                    <a href="{{ path('register') }}">Registrieren</a>
+                </li>
+                <li>
+                    <a href="{{ path('login') }}">Einloggen</a>
+                </li>
+            </ul>
+        {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <ul class="uk-nav uk-nav-primary">
+                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: comments"></span>Alle Beiträge</a>
+                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: heart"></span>Bedüftige</a>
+                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: lifesaver"></span>Helfer</a>
+                <li class="uk-margin-top"></li>
+                <li class="uk-nav-divider"></li>
+                <li><a href="{{ path('user') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>Profil</a>
+                </li>
+                <li class="uk-position-bottom uk-margin-left">
+                    <a href="{{ path('logout') }}"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Logout</a>
+                </li>
+            </ul>
+        {% endif %}
+
+    </div>
+</div>
+
+<nav class="uk-navbar-container uk-visible@l" uk-navbar>
+    <div class="uk-navbar-left">
+        <a class="uk-navbar-item uk-logo" href="/">Corohelp</a>
     </div>
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
