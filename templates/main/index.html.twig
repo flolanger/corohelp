@@ -1,37 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Seeker index{% endblock %}
-
 {% block body %}
-    <h1>Seeker index</h1>
-
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>actions</th>
-        </tr>
-        </thead>
-        <tbody>
+    <h1 class="uk-margin-top">{% trans %}posts.allPosts{% endtrans %}</h1>
+    <div class="uk-grid-match uk-child-width-expand@m uk-grid-medium" uk-grid>
         {% for seeker in seekers %}
-            <tr>
-                <td>{{ seeker.id }}</td>
-                <td>{{ seeker.title }}</td>
-                <td>{{ seeker.description }}</td>
-                <td>
-                    <a href="{{ path('seeker_show', {'id': seeker.id}) }}">show</a>
-                    <a href="{{ path('seeker_edit', {'id': seeker.id}) }}">edit</a>
-                </td>
-            </tr>
+            <div>
+                <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover">
+                    <div class="uk-card-header">
+                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                            <div class="uk-width-auto">
+                                <span uk-icon="icon: user"></span>
+                            </div>
+                            <div class="uk-width-expand">
+                                <h3 class="uk-card-title uk-margin-remove-bottom">{{ seeker.title }}</h3>
+                                <p class="uk-text-meta uk-margin-remove-top">
+                                    <time>April 01, 2016</time>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        <p>{{ seeker.description|length < 200 ? seeker.description : seeker.description|slice(0, 200) ~ ' ...' }}</p>
+                    </div>
+                    <div class="uk-card-footer">
+                        <a href="{{ path('seeker_show', {'id': seeker.id}) }}" class="uk-button uk-button-text">{% trans %}posts.readMore{% endtrans %}</a>
+                    </div>
+                </div>
+            </div>
         {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
+            <p>{% trans %}posts.noPosts{% endtrans %}</p>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('seeker_new') }}">Create new</a>
+    </div>
 {% endblock %}

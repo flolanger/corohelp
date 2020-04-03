@@ -25,8 +25,15 @@ nav:
   menu: Menü
   register: Profil erstellen
   login: Einloggen
-  allposts: Alle Beiträge
+  allPosts: Alle Beiträge
   seeker: Bedürftige
   helper: Helfer
   profile: Profil
   logout: Ausloggen
+
+posts:
+  allPosts: Alle Beiträge
+  readMore: Weiterlesen
+  seeker: Bedürftige
+  helper: Helfer
+  noPosts: Leider keine Beiträge vorhanden.
