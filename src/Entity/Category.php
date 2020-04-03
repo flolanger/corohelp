@@ -8,18 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="Corohelp\Repository\CategoryRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
-class Category
+class Category extends AbstractEntity
 {
-    /**
-     * @var int
-     *
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    protected int $id;
-
     /**
      * @var string
      *
@@ -43,14 +35,6 @@ class Category
     {
         $this->seekers = new ArrayCollection();
         $this->helpers = new ArrayCollection();
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     /**
