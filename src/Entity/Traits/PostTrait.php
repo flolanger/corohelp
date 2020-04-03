@@ -3,6 +3,7 @@
 namespace Corohelp\Entity\Traits;
 
 use Corohelp\Entity\Category;
+use Corohelp\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 trait PostTrait

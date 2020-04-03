@@ -2,6 +2,8 @@
 
 namespace Corohelp\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -54,6 +56,26 @@ class User extends AbstractEntity implements UserInterface
      * @ORM\Column(type="string")
      */
     protected string $password;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Corohelp\Entity\Helper", mappedBy="user", orphanRemoval=true)
+     */
+    private Collection $helpers;
+
+    /**
+     * @var Collection
+     *
+     * @ORM\OneToMany(targetEntity="Corohelp\Entity\Seeker", mappedBy="user", orphanRemoval=true)
+     */
+    private Collection $seekers;
+
+    public function __construct()
+    {
+        $this->helpers = new ArrayCollection();
+        $this->seekers = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -180,19 +202,87 @@ class User extends AbstractEntity implements UserInterface
     }
 
     /**
-     * @see UserInterface
+     * @return Collection|Helper[]
      */
-    public function getSalt()
+    public function getHelpers(): Collection
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return $this->helpers;
     }
 
     /**
-     * @see UserInterface
+     * @param Helper $post
+     * @return self
      */
+    public function addPost(Helper $post): self
+    {
+        if (!$this->helpers->contains($post)) {
+            $this->helpers[] = $post;
+            $post->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Helper $post
+     * @return self
+     */
+    public function removePost(Helper $post): self
+    {
+        if ($this->helpers->contains($post)) {
+            $this->helpers->removeElement($post);
+            if ($post->getUser() === $this) {
+                $post->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Seeker[]
+     */
+    public function getSeekers(): Collection
+    {
+        return $this->seekers;
+    }
+
+    /**
+     * @param Seeker $seeker
+     * @return self
+     */
+    public function addSeeker(Seeker $seeker): self
+    {
+        if (!$this->seekers->contains($seeker)) {
+            $this->seekers[] = $seeker;
+            $seeker->setUser($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Seeker $seeker
+     * @return self
+     */
+    public function removeSeeker(Seeker $seeker): self
+    {
+        if ($this->seekers->contains($seeker)) {
+            $this->seekers->removeElement($seeker);
+            if ($seeker->getUser() === $this) {
+                $seeker->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+
+    public function getSalt()
+    {
+    }
+
     public function eraseCredentials()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 }

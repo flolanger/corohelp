@@ -84,6 +84,7 @@ abstract class AbstractEntity
     }
 
     /**
+     * @ORM\PrePersist()
      * @ORM\PreUpdate()
      */
     public function updateUpdatedDate()
