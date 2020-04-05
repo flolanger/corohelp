@@ -1,11 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Helper{% endblock %}
-
 {% block body %}
-    <h1>Create new Helper</h1>
-
-    {{ include('helper/_form.html.twig') }}
-
-    <a href="{{ path('helper_index') }}">back to list</a>
+    <a class="uk-margin-top" href="{{ app.request.headers.get('referer') }}" uk-icon="icon: arrow-left; ratio: 2.5"></a>
+    <h1>{% trans %}createPost.createHelper{% endtrans %}</h1>
+    {{ include('helper/_form.html.twig', {'button_label': 'createPost.createPost'|trans}) }}
 {% endblock %}

@@ -1,11 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Seeker{% endblock %}
-
 {% block body %}
-    <h1>Create new Seeker</h1>
-
-    {{ include('seeker/_form.html.twig') }}
-
-    <a href="{{ path('seeker_index') }}">back to list</a>
+    <a class="uk-margin-top" href="{{ app.request.headers.get('referer') }}" uk-icon="icon: arrow-left; ratio: 2.5"></a>
+    <h1>{% trans %}createPost.createSeeker{% endtrans %}</h1>
+    {{ include('seeker/_form.html.twig', {'button_label': 'createPost.createPost'|trans}) }}
 {% endblock %}

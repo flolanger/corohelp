@@ -1,5 +1,14 @@
-<form method="post" action="{{ path('seeker_delete', {'id': seeker.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ seeker.id) }}">
-    <button class="btn">Delete</button>
-</form>
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <p>{% trans %}posts.reallyDelete{% endtrans %}</p>
+        <div class="uk-align-right">
+            <form method="post" action="{{ path('seeker_delete', {'id': seeker.id}) }}">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ seeker.id) }}">
+                <a class="uk-button uk-button-default uk-modal-close" type="button">{% trans %}posts.cancel{% endtrans %}</a>
+                <button class="uk-button uk-button-danger">{% trans %}posts.delete{% endtrans %}</button>
+            </form>
+        </div>
+    </div>
+</div>
+<a class="uk-button uk-button-danger" href="#modal-center" uk-toggle>{% trans %}posts.delete{% endtrans %}</a>

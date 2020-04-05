@@ -28,6 +28,8 @@ nav:
   allPosts: Alle Beiträge
   seeker: Bedürftige
   helper: Helfer
+  createHelper: Anzeige erstellen
+  createSeeker: Anzeige erstellen
   profile: Profil
   logout: Ausloggen
 
@@ -37,3 +39,17 @@ posts:
   seeker: Bedürftige
   helper: Helfer
   noPosts: Leider keine Beiträge vorhanden.
+  writtenBy: Geschrieben von
+  on: am
+  contact: Kontakt
+  reallyDelete: Möchtest du diesen Beitrag wirklich löschen?
+  cancel: Abbrechen
+  delete: Löschen
+
+createPost:
+  createHelper: Hilfsbeitrag erstellen
+  createSeeker: Bedürftigenbeitrag erstellen
+  title: Titel
+  description: Text
+  createPost: Beitrag erstellen
+  updatePost: Beitrag aktualisieren

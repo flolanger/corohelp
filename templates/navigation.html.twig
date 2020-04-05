@@ -21,9 +21,12 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             <ul class="uk-nav uk-nav-primary">
                 <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: comments"></span>{% trans %}nav.allPosts{% endtrans %}</a>
-                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: heart"></span>{% trans %}nav.seeker{% endtrans %}</a>
-                <li><a href="{{ path('index') }}"><span class="uk-margin-small-right" uk-icon="icon: lifesaver"></span>{% trans %}nav.helper{% endtrans %}</a>
+                <li><a href="{{ path('seeker_index') }}"><span class="uk-margin-small-right" uk-icon="icon: heart"></span>{% trans %}nav.seeker{% endtrans %}</a>
+                <li><a href="{{ path('helper_index') }}"><span class="uk-margin-small-right" uk-icon="icon: lifesaver"></span>{% trans %}nav.helper{% endtrans %}</a>
                 <li class="uk-margin-top"></li>
+                <li class="uk-nav-divider"></li>
+                <li><a href="{{ path('helper_new') }}"><span class="uk-margin-small-right" uk-icon="icon: file-edit"></span>{% trans %}nav.createHelper{% endtrans %}</a>
+                <li><a href="{{ path('seeker_new') }}"><span class="uk-margin-small-right" uk-icon="icon: file-edit"></span>{% trans %}nav.createSeeker{% endtrans %}</a>
                 <li class="uk-nav-divider"></li>
                 <li><a href="{{ path('profile') }}"><span class="uk-margin-small-right" uk-icon="icon: user"></span>{% trans %}nav.profile{% endtrans %}</a>
                 </li>
@@ -53,6 +56,12 @@
                 </li>
             {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <li>
+                    <a href="{{ path('helper_new') }}">{% trans %}nav.createHelper{% endtrans %}</a>
+                </li>
+                <li>
+                    <a href="{{ path('seeker_new') }}">{% trans %}nav.createHelper{% endtrans %}</a>
+                </li>
                 <li>
                     <a href=""><span uk-icon="icon: user"></span>
                         <div class="uk-navbar-dropdown">
