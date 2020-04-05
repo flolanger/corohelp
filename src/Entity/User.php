@@ -5,6 +5,7 @@ namespace Corohelp\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -56,6 +57,27 @@ class User extends AbstractEntity implements UserInterface
      * @ORM\Column(type="string")
      */
     protected string $password;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    protected bool $confirmed = false;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected string $emailConfirmationToken = '';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    protected string $passwordResetToken = '';
 
     /**
      * @var Collection
@@ -190,6 +212,78 @@ class User extends AbstractEntity implements UserInterface
     public function setPassword(string $password): User
     {
         $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConfirmed(): bool
+    {
+        return $this->confirmed;
+    }
+
+    /**
+     * @param bool $confirmed
+     * @return self
+     */
+    public function setConfirmed(bool $confirmed): User
+    {
+        $this->confirmed = $confirmed;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmailConfirmationToken(): string
+    {
+        return $this->emailConfirmationToken;
+    }
+
+    /**
+     * @param string $emailConfirmationToken
+     * @return self
+     */
+    public function setEmailConfirmationToken(string $emailConfirmationToken = ''): User
+    {
+        $this->emailConfirmationToken = $emailConfirmationToken;
+        return $this;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    public function updatEmailConfirmationToken()
+    {
+        try {
+            $token = bin2hex(random_bytes(50));
+        } catch (Exception $e) {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $token = '';
+            for ($i = 0; $i < strlen($characters); $i++) {
+                $index = rand(0, strlen($characters) - 1);
+                $token .= $characters[$index];
+            }
+        }
+        $this->emailConfirmationToken = $token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPasswordResetToken(): string
+    {
+        return $this->passwordResetToken;
+    }
+
+    /**
+     * @param string $passwordResetToken
+     * @return self
+     */
+    public function setPasswordResetToken(string $passwordResetToken = ''): User
+    {
+        $this->passwordResetToken = $passwordResetToken;
         return $this;
     }
 

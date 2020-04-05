@@ -53,3 +53,9 @@ createPost:
   description: Text
   createPost: Beitrag erstellen
   updatePost: Beitrag aktualisieren
+
+email:
+  registration:
+    subject: E-Mail Bestätigung
+  passwordReset:
+    subject: Passwort zurücksetzten

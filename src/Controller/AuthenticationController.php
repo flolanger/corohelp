@@ -5,6 +5,8 @@ namespace Corohelp\Controller;
 use Corohelp\Entity\User;
 use Corohelp\Form\LoginType;
 use Corohelp\Form\RegistrationType;
+use Corohelp\Repository\UserRepository;
+use Corohelp\Service\EmailService;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,9 +19,10 @@ class AuthenticationController extends AbstractController
     /**
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param EmailService $emailService
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EmailService $emailService): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
@@ -38,6 +41,8 @@ class AuthenticationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+            $emailService->sendConfirmationEmail($user);
 
             return $this->redirectToRoute('index');
         }
@@ -68,8 +73,33 @@ class AuthenticationController extends AbstractController
         );
     }
 
+    /**
+     * @param string $token
+     * @return Response
+     */
+    public function confirm(string $token)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        /** @var UserRepository $userRepository */
+        $userRepository = $entityManager->getRepository(User::class);
+        $user = $userRepository->findOneBy(['emailConfirmationToken' => $token]);
+
+        $userConfirmed = false;
+        if ($user instanceof User) {
+            $user->setConfirmed(true);
+            $entityManager->flush();
+            $userConfirmed = true;
+        }
+        return $this->render(
+            'authentication/confirm.html.twig',
+            [
+                'userConfirmed' => $userConfirmed
+            ]
+        );
+    }
+
     public function logout()
     {
-        throw new LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+        throw new LogicException('Logout not configured in firewall');
     }
 }

@@ -29,6 +29,7 @@ security:
   access_control:
     - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/(login|logout|register), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/confirm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/(seeker|helper)$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/(seeker|helper), roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/(profile)$, roles: IS_AUTHENTICATED_FULLY }

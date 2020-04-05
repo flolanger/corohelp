@@ -1,0 +1,3 @@
+parameters:
+  email:
+    registrationFrom: noreply@local.corohelp.org
