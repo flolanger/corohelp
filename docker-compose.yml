@@ -33,5 +33,10 @@ services:
     ports:
       - ${SQLPORT}:3306
 
+  mail:
+    image: mailhog/mailhog
+    environment:
+      VIRTUAL_PORT: 8025
+
 volumes:
   mysql:
