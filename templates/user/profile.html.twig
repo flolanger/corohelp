@@ -10,4 +10,8 @@
     <a href="{{ path('index') }}">back to list</a>
 
     {{ include('user/_delete_form.html.twig') }}
+
+    {% if not user.confirmed %}
+        <a href="{{ path('user_resend_confirmation') }}">Resend confirmation link</a>
+    {% endif %}
 {% endblock %}

@@ -38,6 +38,9 @@ user_delete:
   methods: DELETE
   requirements:
     id: '\d+'
+user_resend_confirmation:
+  path: /profile/resendconfirmation
+  controller: \Corohelp\Controller\UserController::resendConfirmation
 
 category_index:
   path: /category

@@ -1,1 +1,1 @@
-Click this -> {{ app.request.getSchemeAndHttpHost() ~ path('email_confirmation', {'token': token}) }}
+Click this -> <a href="{{ app.request.getSchemeAndHttpHost() ~ path('email_confirmation', {'token': token}) }}">Confirm account</a>

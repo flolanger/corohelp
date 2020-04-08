@@ -6,7 +6,9 @@ use Corohelp\Entity\User;
 use Corohelp\Form\ProfileType;
 use Corohelp\Form\UserType;
 use Corohelp\Repository\UserRepository;
+use Corohelp\Service\EmailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -47,6 +49,7 @@ class UserController extends AbstractController
      */
     public function profile(Request $request): Response
     {
+        /** @var User $user */
         $user = $this->get('security.token_storage')->getToken()->getUser();
 
         $form = $this->createForm(ProfileType::class, $user);
@@ -142,5 +145,19 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index');
+    }
+
+    /**
+     * @param EmailService $emailService
+     * @return RedirectResponse
+     */
+    public function resendConfirmation(EmailService $emailService)
+    {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $user->updatEmailConfirmationToken();
+        $this->getDoctrine()->getManager()->flush();
+        $emailService->sendConfirmationEmail($user);
+        return $this->redirectToRoute('profile');
     }
 }
