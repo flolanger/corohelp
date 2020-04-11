@@ -1,8 +1,8 @@
 <?php
 
-namespace Corohelp\Repository;
+namespace Places\Repository;
 
-use Corohelp\Entity\User;
+use Places\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;

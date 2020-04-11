@@ -1,13 +1,13 @@
 <?php
 
-namespace Corohelp\Entity;
+namespace Places\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Corohelp\Repository\CategoryRepository")
+ * @ORM\Entity(repositoryClass="Places\Repository\CategoryRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Category extends AbstractEntity
@@ -21,13 +21,13 @@ class Category extends AbstractEntity
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Corohelp\Entity\Seeker", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Places\Entity\Seeker", mappedBy="category")
      */
     protected Collection $seekers;
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Corohelp\Entity\Helper", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Places\Entity\Helper", mappedBy="category")
      */
     protected Collection $helpers;
 

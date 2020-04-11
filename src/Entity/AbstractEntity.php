@@ -1,6 +1,6 @@
 <?php
 
-namespace Corohelp\Entity;
+namespace Places\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;

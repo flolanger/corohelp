@@ -1,8 +1,8 @@
 <?php
 
-namespace Corohelp\Service;
+namespace Places\Service;
 
-use Corohelp\Entity\User;
+use Places\Entity\User;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;

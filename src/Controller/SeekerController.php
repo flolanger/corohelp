@@ -1,10 +1,10 @@
 <?php
 
-namespace Corohelp\Controller;
+namespace Places\Controller;
 
-use Corohelp\Entity\Seeker;
-use Corohelp\Form\SeekerType;
-use Corohelp\Repository\SeekerRepository;
+use Places\Entity\Seeker;
+use Places\Form\SeekerType;
+use Places\Repository\SeekerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

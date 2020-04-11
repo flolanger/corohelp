@@ -1,8 +1,8 @@
 <?php
 
-namespace Corohelp\Security;
+namespace Places\Security;
 
-use Corohelp\Entity\User;
+use Places\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

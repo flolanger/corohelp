@@ -1,13 +1,13 @@
 <?php
 
-namespace Corohelp\Entity;
+namespace Places\Entity;
 
-use Corohelp\Entity\Traits\PostTrait;
+use Places\Entity\Traits\PostTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Corohelp\Repository\HelperRepository")
+ * @ORM\Entity(repositoryClass="Places\Repository\HelperRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Helper extends AbstractEntity
@@ -17,14 +17,14 @@ class Helper extends AbstractEntity
     /**
      * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Corohelp\Entity\Category", inversedBy="helpers")
+     * @ORM\ManyToOne(targetEntity="Places\Entity\Category", inversedBy="helpers")
      */
     protected ?Category $category = null;
 
     /**
      * @var UserInterface
      *
-     * @ORM\ManyToOne(targetEntity="Corohelp\Entity\User", inversedBy="helpers")
+     * @ORM\ManyToOne(targetEntity="Places\Entity\User", inversedBy="helpers")
      * @ORM\JoinColumn(nullable=false)
      */
     private UserInterface $user;

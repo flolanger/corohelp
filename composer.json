@@ -34,12 +34,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Corohelp\\": "src/"
+            "Places\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Corohelp\\": "tests/"
+            "Places\\": "tests/"
         }
     },
     "replace": {

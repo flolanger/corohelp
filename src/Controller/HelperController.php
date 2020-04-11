@@ -1,10 +1,10 @@
 <?php
 
-namespace Corohelp\Controller;
+namespace Places\Controller;
 
-use Corohelp\Entity\Helper;
-use Corohelp\Form\HelperType;
-use Corohelp\Repository\HelperRepository;
+use Places\Entity\Helper;
+use Places\Form\HelperType;
+use Places\Repository\HelperRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

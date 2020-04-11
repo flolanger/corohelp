@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Corohelp\Controller;
+namespace Places\Controller;
 
-use Corohelp\Repository\HelperRepository;
-use Corohelp\Repository\SeekerRepository;
+use Places\Repository\HelperRepository;
+use Places\Repository\SeekerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 

@@ -1,7 +1,8 @@
 <?php
 
-namespace Corohelp\Entity;
+namespace Places\Entity;
 
+use Places\Utility\GeneralUtility;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Corohelp\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="Places\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
@@ -82,14 +83,14 @@ class User extends AbstractEntity implements UserInterface
     /**
      * @var Collection
      *
-     * @ORM\OneToMany(targetEntity="Corohelp\Entity\Helper", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Places\Entity\Helper", mappedBy="user", orphanRemoval=true)
      */
     private Collection $helpers;
 
     /**
      * @var Collection
      *
-     * @ORM\OneToMany(targetEntity="Corohelp\Entity\Seeker", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Places\Entity\Seeker", mappedBy="user", orphanRemoval=true)
      */
     private Collection $seekers;
 
@@ -256,17 +257,7 @@ class User extends AbstractEntity implements UserInterface
      */
     public function updatEmailConfirmationToken()
     {
-        try {
-            $token = bin2hex(random_bytes(50));
-        } catch (Exception $e) {
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $token = '';
-            for ($i = 0; $i < strlen($characters); $i++) {
-                $index = rand(0, strlen($characters) - 1);
-                $token .= $characters[$index];
-            }
-        }
-        $this->emailConfirmationToken = $token;
+        $this->emailConfirmationToken = GeneralUtility::generateRandomToken();
     }
 
     /**
@@ -285,6 +276,14 @@ class User extends AbstractEntity implements UserInterface
     {
         $this->passwordResetToken = $passwordResetToken;
         return $this;
+    }
+
+    /**
+     * @return void
+     */
+    public function updatePasswordResetToken()
+    {
+        $this->passwordResetToken = GeneralUtility::generateRandomToken();
     }
 
     /**

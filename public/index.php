@@ -1,6 +1,6 @@
 <?php
 
-use Corohelp\Kernel;
+use Places\Kernel;
 use Symfony\Component\ErrorHandler\Debug;
 use Symfony\Component\HttpFoundation\Request;
 

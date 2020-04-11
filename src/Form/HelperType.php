@@ -1,8 +1,8 @@
 <?php
 
-namespace Corohelp\Form;
+namespace Places\Form;
 
-use Corohelp\Entity\Helper;
+use Places\Entity\Helper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;

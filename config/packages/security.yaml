@@ -1,12 +1,12 @@
 security:
   encoders:
-    Corohelp\Entity\User:
+    Places\Entity\User:
       algorithm: auto
 
   providers:
     app_user_provider:
       entity:
-        class: Corohelp\Entity\User
+        class: Places\Entity\User
         property: email
   firewalls:
     dev:
@@ -17,7 +17,7 @@ security:
       provider: app_user_provider
       guard:
         authenticators:
-          - Corohelp\Security\LoginFormAuthenticator
+          - Places\Security\LoginFormAuthenticator
       logout:
         path: logout
       remember_me:
@@ -28,7 +28,7 @@ security:
 
   access_control:
     - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/(login|logout|register), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/(login|logout|register|reset), roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/confirm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/(seeker|helper)$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/(seeker|helper), roles: IS_AUTHENTICATED_FULLY }

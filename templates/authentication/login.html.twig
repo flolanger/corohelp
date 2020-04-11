@@ -47,6 +47,10 @@
                                     </button>
                                 </div>
                                 <div class="uk-text-small uk-text-center">
+                                    {% trans %}authentication.forgotAccount{% endtrans %} <a
+                                            href="{{ path('password_reset') }}">{% trans %}authentication.resetPassword{% endtrans %}</a>
+                                </div>
+                                <div class="uk-text-small uk-text-center">
                                     {% trans %}authentication.noAccountQuestion{% endtrans %} <a
                                             href="{{ path('register') }}">{% trans %}authentication.createAccount{% endtrans %}</a>
                                 </div>

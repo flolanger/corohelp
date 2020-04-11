@@ -1,8 +1,8 @@
 <?php
 
-namespace Corohelp\Repository;
+namespace Places\Repository;
 
-use Corohelp\Entity\Helper;
+use Places\Entity\Helper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 

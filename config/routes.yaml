@@ -1,119 +1,122 @@
 index:
   path: /
-  controller: \Corohelp\Controller\MainController::index
+  controller: \Places\Controller\MainController::index
 
 register:
   path: /register
-  controller: \Corohelp\Controller\AuthenticationController::register
+  controller: \Places\Controller\AuthenticationController::register
 login:
   path: /login
-  controller: \Corohelp\Controller\AuthenticationController::login
+  controller: \Places\Controller\AuthenticationController::login
 logout:
   path: /logout
-  controller: \Corohelp\Controller\AuthenticationController::logout
+  controller: \Places\Controller\AuthenticationController::logout
+password_reset:
+  path: /reset
+  controller: \Places\Controller\AuthenticationController::reset
 profile:
   path: /profile
-  controller: \Corohelp\Controller\UserController::profile
+  controller: \Places\Controller\UserController::profile
 
 user_index:
   path: /users
-  controller: \Corohelp\Controller\UserController::index
+  controller: \Places\Controller\UserController::index
 user_new:
   path: /user/new
-  controller: \Corohelp\Controller\UserController::new
+  controller: \Places\Controller\UserController::new
 user_show:
   path: /user/{id}
-  controller: \Corohelp\Controller\UserController::show
+  controller: \Places\Controller\UserController::show
   methods: GET
   requirements:
     id: '\d+'
 user_edit:
   path: /user/{id}/edit
-  controller: \Corohelp\Controller\UserController::edit
+  controller: \Places\Controller\UserController::edit
   requirements:
     id: '\d+'
 user_delete:
   path: /user/{id}
-  controller: \Corohelp\Controller\UserController::delete
+  controller: \Places\Controller\UserController::delete
   methods: DELETE
   requirements:
     id: '\d+'
 user_resend_confirmation:
   path: /profile/resendconfirmation
-  controller: \Corohelp\Controller\UserController::resendConfirmation
+  controller: \Places\Controller\UserController::resendConfirmation
 
 category_index:
   path: /category
-  controller: \Corohelp\Controller\CategoryController::index
+  controller: \Places\Controller\CategoryController::index
 category_new:
   path: /category/new
-  controller: \Corohelp\Controller\CategoryController::new
+  controller: \Places\Controller\CategoryController::new
 category_show:
   path: /category/{id}
-  controller: \Corohelp\Controller\CategoryController::show
+  controller: \Places\Controller\CategoryController::show
   methods: GET
   requirements:
     id: '\d+'
 category_edit:
   path: /category/{id}/edit
-  controller: \Corohelp\Controller\CategoryController::edit
+  controller: \Places\Controller\CategoryController::edit
   requirements:
     id: '\d+'
 category_delete:
   path: /category/{id}
-  controller: \Corohelp\Controller\CategoryController::delete
+  controller: \Places\Controller\CategoryController::delete
   methods: DELETE
   requirements:
     id: '\d+'
 helper_index:
   path: /helper
-  controller: \Corohelp\Controller\HelperController::index
+  controller: \Places\Controller\HelperController::index
 helper_new:
   path: /helper/new
-  controller: \Corohelp\Controller\HelperController::new
+  controller: \Places\Controller\HelperController::new
 helper_show:
   path: /helper/{id}
-  controller: \Corohelp\Controller\HelperController::show
+  controller: \Places\Controller\HelperController::show
   methods: GET
   requirements:
     id: '\d+'
 helper_edit:
   path: /helper/{id}/edit
-  controller: \Corohelp\Controller\HelperController::edit
+  controller: \Places\Controller\HelperController::edit
   requirements:
     id: '\d+'
 helper_delete:
   path: /helper/{id}
-  controller: \Corohelp\Controller\HelperController::delete
+  controller: \Places\Controller\HelperController::delete
   methods: DELETE
   requirements:
     id: '\d+'
 seeker_index:
   path: /seeker
-  controller: \Corohelp\Controller\SeekerController::index
+  controller: \Places\Controller\SeekerController::index
 seeker_new:
   path: /seeker/new
-  controller: \Corohelp\Controller\SeekerController::new
+  controller: \Places\Controller\SeekerController::new
 seeker_show:
   path: /seeker/{id}
-  controller: \Corohelp\Controller\SeekerController::show
+  controller: \Places\Controller\SeekerController::show
   methods: GET
   requirements:
     id: '\d+'
 seeker_edit:
   path: /seeker/{id}/edit
-  controller: \Corohelp\Controller\SeekerController::edit
+  controller: \Places\Controller\SeekerController::edit
   requirements:
     id: '\d+'
 seeker_delete:
   path: /seeker/{id}
-  controller: \Corohelp\Controller\SeekerController::delete
+  controller: \Places\Controller\SeekerController::delete
   methods: DELETE
   requirements:
     id: '\d+'
 
 email_confirmation:
   path: /confirm/{token}
-  controller: \Corohelp\Controller\AuthenticationController::confirm
+  controller: \Places\Controller\AuthenticationController::confirm
   requirements:
     token: '.+'

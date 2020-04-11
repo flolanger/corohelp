@@ -1,12 +1,13 @@
 <?php
 
-namespace Corohelp\Controller;
+namespace Places\Controller;
 
-use Corohelp\Entity\User;
-use Corohelp\Form\LoginType;
-use Corohelp\Form\RegistrationType;
-use Corohelp\Repository\UserRepository;
-use Corohelp\Service\EmailService;
+use Places\Entity\User;
+use Places\Form\LoginType;
+use Places\Form\RegistrationType;
+use Places\Form\ResetAccountType;
+use Places\Repository\UserRepository;
+use Places\Service\EmailService;
 use LogicException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,12 +18,24 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AuthenticationController extends AbstractController
 {
     /**
+     * @var EmailService
+     */
+    protected EmailService $emailService;
+
+    /**
+     * @param EmailService $emailService
+     */
+    public function __construct(EmailService $emailService)
+    {
+        $this->emailService = $emailService;
+    }
+
+    /**
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param EmailService $emailService
      * @return Response
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, EmailService $emailService): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationType::class, $user);
@@ -42,7 +55,7 @@ class AuthenticationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $emailService->sendConfirmationEmail($user);
+            $this->emailService->sendConfirmationEmail($user);
 
             return $this->redirectToRoute('index');
         }
@@ -96,6 +109,35 @@ class AuthenticationController extends AbstractController
                 'userConfirmed' => $userConfirmed
             ]
         );
+    }
+
+    /**
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @param string $token
+     * @return Response
+     */
+    public function reset(Request $request, UserRepository $userRepository, $token = '')
+    {
+        $form = $this->createForm(ResetAccountType::class);
+        $form->handleRequest($request);
+
+        $emailSent = false;
+        if ($form->isSubmitted() && $form->isValid()) {
+            $email = $form->get('email')->getData();
+            $user = $userRepository->findOneBy(['email' => $email]);
+            if ($user instanceof User) {
+                $user->updatePasswordResetToken();
+                $this->getDoctrine()->getManager()->flush();
+                $this->emailService->sendPassworsResetEmail($user);
+                $emailSent = true;
+            }
+        }
+
+        return $this->render('authentication/reset.html.twig', [
+            'resetForm' => $form->createView(),
+            'emailSent' => $emailSent,
+        ]);
     }
 
     public function logout()

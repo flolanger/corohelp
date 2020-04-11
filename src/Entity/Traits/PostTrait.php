@@ -1,9 +1,9 @@
 <?php
 
-namespace Corohelp\Entity\Traits;
+namespace Places\Entity\Traits;
 
-use Corohelp\Entity\Category;
-use Corohelp\Entity\User;
+use Places\Entity\Category;
+use Places\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
 trait PostTrait
@@ -25,7 +25,7 @@ trait PostTrait
     /**
      * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Corohelp\Entity\Category", inversedBy="seekers")
+     * @ORM\ManyToOne(targetEntity="Places\Entity\Category", inversedBy="seekers")
      */
     protected ?Category $category = null;
 

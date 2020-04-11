@@ -1,10 +1,10 @@
 <?php
 
-namespace Corohelp\Controller;
+namespace Places\Controller;
 
-use Corohelp\Entity\Category;
-use Corohelp\Form\CategoryType;
-use Corohelp\Repository\CategoryRepository;
+use Places\Entity\Category;
+use Places\Form\CategoryType;
+use Places\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

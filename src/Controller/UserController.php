@@ -1,12 +1,12 @@
 <?php
 
-namespace Corohelp\Controller;
+namespace Places\Controller;
 
-use Corohelp\Entity\User;
-use Corohelp\Form\ProfileType;
-use Corohelp\Form\UserType;
-use Corohelp\Repository\UserRepository;
-use Corohelp\Service\EmailService;
+use Places\Entity\User;
+use Places\Form\ProfileType;
+use Places\Form\UserType;
+use Places\Repository\UserRepository;
+use Places\Service\EmailService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Corohelp;
+namespace Places;
 
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
