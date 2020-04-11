@@ -13,6 +13,7 @@ class PlaceType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('location')
             ->add('description');
     }
 

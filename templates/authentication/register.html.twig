@@ -49,18 +49,6 @@
                                     </div>
                                 </div>
                                 <div class="uk-margin">
-                                    <div class="uk-inline uk-width-1-1">
-                                        <span class="uk-form-icon" uk-icon="icon: location"></span>
-                                        {{ form_widget(registrationForm.location, {'attr': {'class': 'uk-input uk-form-large js-location', 'placeholder': 'register.location', 'autocomplete': 'autocomplete_off'} }) }}
-                                    </div>
-                                </div>
-                                <div class="uk-margin">
-                                    <div class="uk-inline uk-width-1-1">
-                                        <span class="uk-form-icon" uk-icon="icon: receiver"></span>
-                                        {{ form_widget(registrationForm.phoneNumber, {'attr': {'class': 'uk-input uk-form-large', 'placeholder': 'register.phoneNumber'} }) }}
-                                    </div>
-                                </div>
-                                <div class="uk-margin">
                                     <button class="uk-button uk-button-primary uk-button-large uk-width-1-1">{% trans %}register.createAccount{% endtrans %}</button>
                                 </div>
                                 {{ form_end(registrationForm) }}

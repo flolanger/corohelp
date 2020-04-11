@@ -62,22 +62,6 @@ class RegistrationType extends AbstractType
                     'required' => false,
                     'empty_data' => '',
                 ]
-            )
-            ->add(
-                'location',
-                TextType::class,
-                [
-                    'required' => false,
-                    'empty_data' => '',
-                ]
-            )
-            ->add(
-                'phoneNumber',
-                TextType::class,
-                [
-                    'required' => false,
-                    'empty_data' => '',
-                ]
             );
     }
 
