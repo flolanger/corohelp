@@ -6,7 +6,6 @@ use Places\Utility\GeneralUtility;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Exception;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -83,21 +82,13 @@ class User extends AbstractEntity implements UserInterface
     /**
      * @var Collection
      *
-     * @ORM\OneToMany(targetEntity="Places\Entity\Helper", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Places\Entity\Place", mappedBy="user", orphanRemoval=true)
      */
-    private Collection $helpers;
-
-    /**
-     * @var Collection
-     *
-     * @ORM\OneToMany(targetEntity="Places\Entity\Seeker", mappedBy="user", orphanRemoval=true)
-     */
-    private Collection $seekers;
+    private Collection $places;
 
     public function __construct()
     {
-        $this->helpers = new ArrayCollection();
-        $this->seekers = new ArrayCollection();
+        $this->places = new ArrayCollection();
     }
 
     /**
@@ -295,21 +286,21 @@ class User extends AbstractEntity implements UserInterface
     }
 
     /**
-     * @return Collection|Helper[]
+     * @return Collection|Place[]
      */
-    public function getHelpers(): Collection
+    public function getPlaces(): Collection
     {
-        return $this->helpers;
+        return $this->places;
     }
 
     /**
-     * @param Helper $post
+     * @param Place $post
      * @return self
      */
-    public function addPost(Helper $post): self
+    public function addPost(Place $post): self
     {
-        if (!$this->helpers->contains($post)) {
-            $this->helpers[] = $post;
+        if (!$this->places->contains($post)) {
+            $this->places[] = $post;
             $post->setUser($this);
         }
 
@@ -317,13 +308,13 @@ class User extends AbstractEntity implements UserInterface
     }
 
     /**
-     * @param Helper $post
+     * @param Place $post
      * @return self
      */
-    public function removePost(Helper $post): self
+    public function removePost(Place $post): self
     {
-        if ($this->helpers->contains($post)) {
-            $this->helpers->removeElement($post);
+        if ($this->places->contains($post)) {
+            $this->places->removeElement($post);
             if ($post->getUser() === $this) {
                 $post->setUser(null);
             }
@@ -331,45 +322,6 @@ class User extends AbstractEntity implements UserInterface
 
         return $this;
     }
-
-    /**
-     * @return Collection|Seeker[]
-     */
-    public function getSeekers(): Collection
-    {
-        return $this->seekers;
-    }
-
-    /**
-     * @param Seeker $seeker
-     * @return self
-     */
-    public function addSeeker(Seeker $seeker): self
-    {
-        if (!$this->seekers->contains($seeker)) {
-            $this->seekers[] = $seeker;
-            $seeker->setUser($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param Seeker $seeker
-     * @return self
-     */
-    public function removeSeeker(Seeker $seeker): self
-    {
-        if ($this->seekers->contains($seeker)) {
-            $this->seekers->removeElement($seeker);
-            if ($seeker->getUser() === $this) {
-                $seeker->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
 
     public function getSalt()
     {

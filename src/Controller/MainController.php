@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace Places\Controller;
 
-use Places\Repository\HelperRepository;
-use Places\Repository\SeekerRepository;
+use Places\Repository\PlaceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,19 +13,13 @@ use Symfony\Component\HttpFoundation\Response;
 class MainController extends AbstractController
 {
     /**
-     * @var SeekerRepository
+     * @var PlaceRepository
      */
-    protected SeekerRepository $seekerRepository;
+    protected PlaceRepository $placeRepository;
 
-    /**
-     * @var HelperRepository
-     */
-    protected HelperRepository $helperRepository;
-
-    public function __construct(SeekerRepository $seekerRepository, HelperRepository $helperRepository)
+    public function __construct(PlaceRepository $placeRepository)
     {
-        $this->seekerRepository = $seekerRepository;
-        $this->helperRepository = $helperRepository;
+        $this->placeRepository = $placeRepository;
     }
 
     /**
@@ -35,8 +28,7 @@ class MainController extends AbstractController
     public function index()
     {
         return $this->render('/main/index.html.twig', [
-            'seekers' => $this->seekerRepository->findAll(),
-            'helpers' => $this->helperRepository->findAll(),
+            'places' => $this->placeRepository->findAll(),
         ]);
     }
 }

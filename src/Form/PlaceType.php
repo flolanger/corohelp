@@ -2,12 +2,12 @@
 
 namespace Places\Form;
 
-use Places\Entity\Helper;
+use Places\Entity\Place;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class HelperType extends AbstractType
+class PlaceType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -19,7 +19,7 @@ class HelperType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Helper::class,
+            'data_class' => Place::class,
         ]);
     }
 }

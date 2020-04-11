@@ -2,17 +2,14 @@
 
 namespace Places\Repository;
 
-use Places\Entity\Helper;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Places\Entity\Place;
 
-/**
- * Class HelperRepository
- */
-class HelperRepository extends ServiceEntityRepository
+class PlaceRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Helper::class);
+        parent::__construct($registry, Place::class);
     }
 }

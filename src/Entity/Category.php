@@ -25,16 +25,9 @@ class Category extends AbstractEntity
      */
     protected Collection $seekers;
 
-    /**
-     * @var Collection
-     * @ORM\OneToMany(targetEntity="Places\Entity\Helper", mappedBy="category")
-     */
-    protected Collection $helpers;
-
     public function __construct()
     {
         $this->seekers = new ArrayCollection();
-        $this->helpers = new ArrayCollection();
     }
 
     /**
@@ -89,45 +82,6 @@ class Category extends AbstractEntity
             // set the owning side to null (unless already changed)
             if ($seeker->getCategory() === $this) {
                 $seeker->setCategory(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getHelpers(): Collection
-    {
-        return $this->helpers;
-    }
-
-    /**
-     * @param Helper $helper
-     * @return $this
-     */
-    public function addHelper(Helper $helper): self
-    {
-        if (!$this->helpers->contains($helper)) {
-            $this->helpers[] = $helper;
-            $helper->setCategory($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param Helper $helper
-     * @return $this
-     */
-    public function removeHelper(Helper $helper): self
-    {
-        if ($this->helpers->contains($helper)) {
-            $this->helpers->removeElement($helper);
-            // set the owning side to null (unless already changed)
-            if ($helper->getCategory() === $this) {
-                $helper->setCategory(null);
             }
         }
 
