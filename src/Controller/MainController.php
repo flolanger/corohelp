@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace Places\Controller;
 
+use Places\Form\FilterType;
 use Places\Repository\PlaceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -23,12 +25,27 @@ class MainController extends AbstractController
     }
 
     /**
+     * @param Request $request
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filterForm = $this->createForm(FilterType::class);
+        $filterForm->handleRequest($request);
+
+        if ($filterForm->isSubmitted() && $filterForm->isValid()) {
+            $category = $filterForm->get('category')->getData();
+            if (null !== $category) {
+                $places = $this->placeRepository->findBy(['category' => $category]);
+            } else {
+                $places = $this->placeRepository->findAll();
+            }
+        } else {
+            $places = $this->placeRepository->findAll();
+        }
         return $this->render('/main/index.html.twig', [
-            'places' => $this->placeRepository->findAll(),
+            'places' => $places,
+            'filterForm' => $filterForm->createView(),
         ]);
     }
 }

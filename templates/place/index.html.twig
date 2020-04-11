@@ -23,11 +23,6 @@
                         <p>{{ place.description|length < 200 ? place.description : place.description|slice(0, 200) ~ ' ...' }}</p>
                         <div class="uk-align-right">
                             <a href="mailto:{{ place.user.email }}" uk-icon="icon: mail"></a><a href="mailto:{{ place.user.email }}" class="uk-margin-small-left">{{ place.user.email }}</a>
-                            {% if place.user.phoneNumber %}
-                                <div class="uk-margin-small-top"></div>
-                                <a href="tel:{{ place.user.phoneNumber }}" uk-icon="icon: receiver"></a>
-                                <a href="tel:{{ place.user.phoneNumber }}" class="uk-margin-small-left">{{ place.user.phoneNumber }}</a>
-                            {% endif %}
                         </div>
                     </div>
                     <div class="uk-card-footer">

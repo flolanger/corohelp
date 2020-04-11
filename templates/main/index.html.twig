@@ -3,6 +3,9 @@
 {% block body %}
     <h1 class="uk-margin-top">{% trans %}posts.allPosts{% endtrans %}</h1>
     <div class="uk-grid-match uk-child-width-expand@m uk-grid-medium" uk-grid>
+        {{ form_start(filterForm) }}
+        {{ form_widget(filterForm) }}
+        {{ form_end(filterForm) }}
         {% for place in places %}
             <div>
                 <div class="uk-card uk-card-default uk-width-1-1@l uk-card-hover">

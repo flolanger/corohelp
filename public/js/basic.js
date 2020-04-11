@@ -1,4 +1,4 @@
-let input = document.getElementById('registration_location');
+let input = document.getElementById('place_location');
 input.addEventListener('keydown', function (event) {
     if (event.keyCode === 13) {
         event.preventDefault();
