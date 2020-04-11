@@ -26,6 +26,20 @@ class Place extends AbstractEntity
     protected string $description = '';
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255)
+     */
+    protected string $location = '';
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(type="float", nullable=true)
+     */
+    protected ?float $rating = null;
+
+    /**
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="Places\Entity\Category", inversedBy="places")
@@ -75,6 +89,42 @@ class Place extends AbstractEntity
     {
         $this->description = $description;
 
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLocation(): string
+    {
+        return $this->location;
+    }
+
+    /**
+     * @param string $location
+     * @return self
+     */
+    public function setLocation(string $location): Place
+    {
+        $this->location = $location;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getRating(): float
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param float $rating
+     * @return self
+     */
+    public function setRating(float $rating): Place
+    {
+        $this->rating = $rating;
         return $this;
     }
 
