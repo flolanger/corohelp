@@ -68,49 +68,26 @@ category_delete:
   methods: DELETE
   requirements:
     id: '\d+'
-helper_index:
-  path: /helper
-  controller: \Places\Controller\HelperController::index
-helper_new:
-  path: /helper/new
-  controller: \Places\Controller\HelperController::new
-helper_show:
-  path: /helper/{id}
-  controller: \Places\Controller\HelperController::show
+place_index:
+  path: /place
+  controller: \Places\Controller\PlaceController::index
+place_new:
+  path: /place/new
+  controller: \Places\Controller\PlaceController::new
+place_show:
+  path: /place/{id}
+  controller: \Places\Controller\PlaceController::show
   methods: GET
   requirements:
     id: '\d+'
-helper_edit:
-  path: /helper/{id}/edit
-  controller: \Places\Controller\HelperController::edit
+place_edit:
+  path: /place/{id}/edit
+  controller: \Places\Controller\PlaceController::edit
   requirements:
     id: '\d+'
-helper_delete:
-  path: /helper/{id}
-  controller: \Places\Controller\HelperController::delete
-  methods: DELETE
-  requirements:
-    id: '\d+'
-seeker_index:
-  path: /seeker
-  controller: \Places\Controller\SeekerController::index
-seeker_new:
-  path: /seeker/new
-  controller: \Places\Controller\SeekerController::new
-seeker_show:
-  path: /seeker/{id}
-  controller: \Places\Controller\SeekerController::show
-  methods: GET
-  requirements:
-    id: '\d+'
-seeker_edit:
-  path: /seeker/{id}/edit
-  controller: \Places\Controller\SeekerController::edit
-  requirements:
-    id: '\d+'
-seeker_delete:
-  path: /seeker/{id}
-  controller: \Places\Controller\SeekerController::delete
+place_delete:
+  path: /place/{id}
+  controller: \Places\Controller\PlaceController::delete
   methods: DELETE
   requirements:
     id: '\d+'

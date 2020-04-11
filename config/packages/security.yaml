@@ -30,8 +30,8 @@ security:
     - { path: ^/$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/(login|logout|register|reset), roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/confirm, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/(seeker|helper)$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-    - { path: ^/(seeker|helper), roles: IS_AUTHENTICATED_FULLY }
+    - { path: ^/(place)$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/(place), roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/profile, roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/category, roles: ROLE_ADMIN }
     - { path: ^/, roles: ROLE_ADMIN }

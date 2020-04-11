@@ -27,7 +27,7 @@ nav:
   login: Einloggen
   allPosts: Alle Beiträge
   seeker: Bedürftige
-  helper: Helfer
+  place: Ort
   createHelper: Anzeige erstellen
   createSeeker: Anzeige erstellen
   profile: Profil
@@ -36,8 +36,7 @@ nav:
 posts:
   allPosts: Alle Beiträge
   readMore: Weiterlesen
-  seeker: Bedürftige
-  helper: Helfer
+  place: Ort
   noPosts: Leider keine Beiträge vorhanden.
   writtenBy: Geschrieben von
   on: am
@@ -47,8 +46,7 @@ posts:
   delete: Löschen
 
 createPost:
-  createHelper: Hilfsbeitrag erstellen
-  createSeeker: Bedürftigenbeitrag erstellen
+  createPlace: Ort erstellen
   title: Titel
   description: Text
   createPost: Beitrag erstellen

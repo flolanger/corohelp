@@ -21,13 +21,13 @@ class Category extends AbstractEntity
 
     /**
      * @var Collection
-     * @ORM\OneToMany(targetEntity="Places\Entity\Seeker", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="Places\Entity\Place", mappedBy="category")
      */
-    protected Collection $seekers;
+    protected Collection $places;
 
     public function __construct()
     {
-        $this->seekers = new ArrayCollection();
+        $this->places = new ArrayCollection();
     }
 
     /**
@@ -52,36 +52,36 @@ class Category extends AbstractEntity
     /**
      * @return Collection
      */
-    public function getSeekers(): Collection
+    public function getPlaces(): Collection
     {
-        return $this->seekers;
+        return $this->places;
     }
 
     /**
-     * @param Seeker $seeker
+     * @param Place $place
      * @return $this
      */
-    public function addSeeker(Seeker $seeker): self
+    public function addPlace(Place $place): self
     {
-        if (!$this->seekers->contains($seeker)) {
-            $this->seekers[] = $seeker;
-            $seeker->setCategory($this);
+        if (!$this->places->contains($place)) {
+            $this->places[] = $place;
+            $place->setCategory($this);
         }
 
         return $this;
     }
 
     /**
-     * @param Seeker $seeker
+     * @param Place $place
      * @return $this
      */
-    public function removeSeeker(Seeker $seeker): self
+    public function removePlace(Place $place): self
     {
-        if ($this->seekers->contains($seeker)) {
-            $this->seekers->removeElement($seeker);
+        if ($this->places->contains($place)) {
+            $this->places->removeElement($place);
             // set the owning side to null (unless already changed)
-            if ($seeker->getCategory() === $this) {
-                $seeker->setCategory(null);
+            if ($place->getCategory() === $this) {
+                $place->setCategory(null);
             }
         }
 

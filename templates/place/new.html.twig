@@ -2,6 +2,6 @@
 
 {% block body %}
     <a class="uk-margin-top" href="{{ app.request.headers.get('referer') }}" uk-icon="icon: arrow-left; ratio: 2.5"></a>
-    <h1>{% trans %}createPost.createHelper{% endtrans %}</h1>
-    {{ include('helper/_form.html.twig', {'button_label': 'createPost.createPost'|trans}) }}
+    <h1>{% trans %}createPost.createPlace{% endtrans %}</h1>
+    {{ include('place/_form.html.twig', {'button_label': 'createPost.createPost'|trans}) }}
 {% endblock %}
